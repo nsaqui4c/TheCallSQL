@@ -1,0 +1,24 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
+        <%- include('./partials/messages') %>
+        <form method="post" enctype="multipart/form-data" action="/admin/upload">
+          <div class="form-group">
+            <label for="file" >Upload Image</label>
+            <input 
+              type="file"
+              id="file"
+              name="file"
+              class="form-control"
+              />
+              
+            
+          </div>
+          <div class="form-group">
+            <label for="exampleTextarea">Insert your post here</label>
+            <textarea class="form-control" id="post" rows="9" name="post" placeholder="Insert your post here"></textarea>
+          </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Upload</button>
+        </form>
