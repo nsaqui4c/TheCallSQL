@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const utility = require('../config/utilities');
+const { ensureAuthenticated } = require('../config/auth');
 
 //var nodemailer = require("nodemailer");
 
@@ -56,7 +57,7 @@ router.post('/register', (req, res) => {
 
     } else {
         utility.getuser(email).then(user => {
-            console.log("promiseGet", user, user.length)
+            //console.log("promiseGet", user, user.length)
 
             if (user.length > 0) {
                 errors.push({ msg: 'Email already exists' });
@@ -81,6 +82,23 @@ router.post('/register', (req, res) => {
 
 // Subscription Page
 router.get('/subscribe', (req, res) => res.render('subscription'));
+
+
+//freecopy
+
+router.get('/freecopy', ensureAuthenticated, (req, res) =>
+    res.render('freecopy', {
+    user: req.user
+    })
+);
+
+
+// Logout
+router.get('/logout', (req, res) => {
+    req.logout();
+    req.flash('success_msg', 'You are logged out');
+    res.redirect('/');
+  });
 
 
 module.exports = router; 

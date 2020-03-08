@@ -42,7 +42,7 @@ module.exports =function(passport){
       passport.deserializeUser(function(id, done) 
       {
         utility.getuser(id).then(user=>{
-            console.log('deserialize',user[0])
+           
             done(null,user[0])
         })
         

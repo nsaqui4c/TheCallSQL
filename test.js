@@ -27,3 +27,8 @@ passEncrypt("123456").then(hash=>{
         console.log("match");
     })
 });
+
+
+
+const a='Fri Mar 06 2020 00:00:00 GMT+0530 (India Standard Time)';
+console.log(a[1]);

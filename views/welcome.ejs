@@ -1,18 +1,43 @@
 
-
+<div class="row">
+  <div class="col-md-8 col-sm-12">
 <section class="headings text-center text-white">
-  <div class="container">
+  
    
   <div>
     <img src="/headings.png" class="headings-img img-fluid" alt="The call Logo">
-    <div class="monthly fnt-42">MONTHLY</div>
-    <p class="text-justify fnt-18"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="monthly fnt-34">MONTHLY</div>
+    <p class="text-justify fnt-16"> It is a platform through which prolific writers, analysts and researchers will be
+       presenting the Islamic viewpoint on different subjects in order to revive the Ummah intellectually, so that it once again
+        becomes the leading nation of the world. The Call has a team of different levels of dawah carriers including students 
+        from various Madaris and universities like JAMIA, AMU etc. with some professors and working professionals too. It is also 
+        an open platform for every Muslim brother and sister who want to help us or write an article with a quality content and in
+        a comprehensive manner.</p>
   </div>
+
+
+
+ 
+  <div class="contact-details d-none d-md-block">  <!--Visible for medium screen-->
+    <div class="row">
+      
+
+      <div class="contact-2 mx-auto">
+        <h5 class="text-red">Follow Us</h5>
+        <a href="https://www.facebook.com/theCall4Success/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://twitter.com/the_call2019"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://instagram.com/thecall4success"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+<div class="d-md-none">  <!-- Vissible only for mobile-->
   <div class="subscribe-btns">
     <div class="row">
       <div class="col-md-6">
@@ -22,7 +47,7 @@
       </div>
       <div class="col-md-6">
         <div class="subscribe">
-          <a href="/users/subscribe" class="btn bg-red text-white">Subscribe Monthly Issues</a>
+          <a href="/subscription" class="btn bg-red text-white">Subscribe Monthly Issues</a>
         </div>
       </div>
     </div>
@@ -46,20 +71,138 @@
       </div>
     </div>
 
-    <p>Create an account or login</p>
+    <!-- <p>Create an account or login</p>
       <a href="/users/register" class="btn btn-primary btn-block mb-2"
         >Register</a
       >
-      <a href="/users/login" class="btn btn-secondary btn-block">Login</a>
+      <a href="/users/login" class="btn btn-secondary btn-block">Login</a> -->
 
       
   </div>
+
+</div>
+       
+           
+  
+
+</section>
+</div>
+
+
+
+
+
+
+
+
+<div class="col-md-4 mt-5 white-border d-none d-md-block">   <!-- second column -->
+
+
+  <div class="row">
+    
+      <div class="card card-body bg-black">
+        <h2 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h2>
+        <%- include('./partials/messages') %>
+        <form action="/users/login" method="POST">
+          <div class="form-group">
+             <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="Enter Email"  placeholder="email" value="<%= typeof email != 'undefined' ? email : '' %>"/>
+            
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Enter Password"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <p class="lead mt-4">
+          No Account? <a href="/users/register">Register</a>
+        </p>
+  
+       </div>
+    
   </div>
-</section>
-<!-- footer -->
-<section class="footer">
-  <p class="text-center text-white">The Call &copy; 2019. All Rights Reserved</p>
-</section>
+
+
+
+
+  <div class="subscribe-btns">
+    
+      
+        <div class="freecopy-btn">
+          <a href="/users/freecopy" class="btn bg-white">Get a Free Issue</a>
+        </div>
+      
+      
+        <div class="subscribe">
+          <a href="/users/subscribe" class="btn bg-red text-white">Subscribe Monthly Issues</a>
+        </div>
+      
+    
+  </div>
+
+  <div class="row mt-3">
+       
+    <div class="col-md-7" >
+    <p><i class="fa fa-envelope text-red" aria-hidden="true"></i> <span >feedback@thecall.com</span></p>
+  </div>
+    <div class="col-md-5">
+    <p><i class="fa fa-phone text-red" aria-hidden="true"></i> <span >+91 9643597296</span></p>
+  </div>
+
+  </div>
+ 
+  <section class="footer">
+    <p class="text-center text-white">The Call &copy; 2019. All Rights Reserved</p>
+  </section>
+
+
+
+</div>  <!-- second column -->
+</div>   <!-- first row -->
+
+
+
+
+<% if(typeof posts != 'undefined')
+{ %> 
+  <% posts.forEach(function(post) { %>
+
+    
+    <div  class="white-border postDiv mt-5">
+
+      <div class="row mt-5 container">
+        <div class="col-md-6 col-sm-12">
+          <h4><%=post.heading%></h4>
+      </div>
+      <div class="col-md-6 col-sm-12">
+          <p class="pull-right">
+            <%=post.date%>
+          </p>
+      </div>
+      </div>
+
+    <img src="/upload/<%=post.pid%>.png" align="left" alt="" style="max-height:500px;max-width:90%;margin: 8px;">
+    <p class="text-justify fnt-16" style="margin: 16px;"><%=post.text%></p>
+    </div>  
+    
+  <% }); %>
+<% } %> 
+
+
+
+  
+
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -22,7 +22,7 @@ var con = mysql.createConnection({
 // }
 
 const getConnection =new Promise((resolve,reject)=>{
-   // console.log("getconnection ",con.state)
+   console.log("getconnection ",con.state)
     if(con.state==='disconnected'){
     con.connect(function(err) {
         console.log("trying ......!",con.state);

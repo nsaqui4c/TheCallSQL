@@ -5,6 +5,8 @@ const LocalStrategy = require('passport-local').Strategy;
 
 
 
+
+
 const getUser = (email) => {
     return new Promise((resolve, reject) => {
         
@@ -62,7 +64,53 @@ const passEncrypt = (user) => {
 }
 
 
+const createPostText= (heading,text)=>{
+    return new Promise((resolve,reject)=>{
+
+        con.getCon.then((connect) => {
+
+            sql = "insert into post set ?";
+            value={
+                heading:heading,
+                text:text
+            }
+
+            connect.query(sql, value, (err, rows) => {
+                if (err) reject(err, "error inserting data to DB");
+               // connect.end();
+                resolve(rows);
+
+            })
+        }).catch((msg, err) => {
+            console.log(msg, err)
+        });
+    });
+}
+
+
+var getPost= ()=>{ return new Promise((resolve,reject)=>{
+
+        con.getCon.then((connect) => {
+
+        sql = "select * from post";
+       
+        connect.query(sql, (err, rows) => {
+            if (err) reject(err, "error inserting data to DB");
+
+            resolve(rows);
+
+        })
+    }).catch((msg, err) => {
+        console.log(msg, err)
+    });
+
+});
 
 
 
-module.exports = { getuser: getUser, regUser: registerUser, passEncrypt: passEncrypt };
+}
+
+
+
+
+module.exports = { getuser: getUser, regUser: registerUser, passEncrypt: passEncrypt,createPostText:createPostText,getPost:getPost };
