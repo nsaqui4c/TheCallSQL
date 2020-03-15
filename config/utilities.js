@@ -92,7 +92,7 @@ var getPost= ()=>{ return new Promise((resolve,reject)=>{
 
         con.getCon.then((connect) => {
 
-        sql = "select * from post";
+        sql = "select * from post order by date desc";
        
         connect.query(sql, (err, rows) => {
             if (err) reject(err, "error inserting data to DB");
@@ -106,11 +106,31 @@ var getPost= ()=>{ return new Promise((resolve,reject)=>{
 
 });
 
+}
 
 
+const subscribeUser=(user)=>{
+    return new Promise((resolve,reject)=>{
+        con.getCon.then((connect) => {
+            
+            sql="update cuser set ?";
+            value={
+                age:user.age//,gender:user.gender,profesion:user.profession,mobno:user.mobile,city:user.city,state:user.state,country:user.country,type:'S' 
+            }
+            connect.query(sql,value, (err, rows) => {
+                if (err) reject(err, "error inserting data to DB");
+    
+                resolve(rows);
+    
+            })
+            
+        }).catch((msg, err) => {
+            console.log(msg, err)
+        })
+    })
 }
 
 
 
 
-module.exports = { getuser: getUser, regUser: registerUser, passEncrypt: passEncrypt,createPostText:createPostText,getPost:getPost };
+module.exports = { getuser: getUser, regUser: registerUser, passEncrypt: passEncrypt,createPostText:createPostText,getPost:getPost,subscribeUser:subscribeUser };

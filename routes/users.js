@@ -81,7 +81,64 @@ router.post('/register', (req, res) => {
 
 
 // Subscription Page
-router.get('/subscribe', (req, res) => res.render('subscription'));
+router.get('/subscribe',ensureAuthenticated, (req, res) => res.render('subscription',
+    {
+    user:req.user
+    }
+));
+
+
+//Suubscriptin Post
+router.post('/subscription', (req, res) => {
+    const userToSubscribe = {  age, gender,subscription, profession,adress,city, state, mobile } = req.body;
+    let errors = [];
+
+    if(!req.user){
+    req.flash('error_msg', 'Please log in to view that resource');
+    res.redirect('/users/login');
+    }
+
+    else{
+    userToSubscribe.fname=req.user.fName;
+    userToSubscribe.lname=req.user.lName;
+    userToSubscribe.email=req.user.email;
+
+    
+
+    if (!age || !gender || !subscription || !profession||!adress || !city || !state || !mobile) {
+        errors.push({ msg: 'Please enter all fields' });
+        res.render('register', { errors, city, state });
+
+    }
+
+   
+    if (errors.length > 0) {
+        res.render('register', { errors, city, state });
+        
+    } 
+
+    else {
+        errors.push({msg:"all field good"})
+        req.flash('success_msg','You are now subscribed' );
+
+        console.log(userToSubscribe);
+
+        utility.subscribeUser(userToSubscribe).then(rows=>{
+
+            console.log(rows)
+            res.render('register', { errors, city, state });
+        })
+
+        
+
+    }
+
+}
+});
+
+
+
+
 
 
 //freecopy

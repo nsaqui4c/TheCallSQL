@@ -16,12 +16,10 @@ const handleError = (err, res) => {
 router.get('/',(req, res) => {
     
     utility.getPost().then(rows=>{
-
-       // console.log(rows)
-
        
         res.render('welcome', {
-            posts: rows
+            posts: rows,
+            user:req.user
             })
 
 

@@ -97,8 +97,24 @@
 
 <div class="col-md-4 mt-5 white-border d-none d-md-block">   <!-- second column -->
 
+  <%if (typeof user != 'undefined') {%>
+    <div class="mt-5" style="margin:auto;">
+   <h3  style="margin:auto;width:100%" class="mt-5" > Welcome <%=user.fName%></h3>
+  </div>
 
-  <div class="row">
+  <div class="subscribe">
+    <a href="/users/logout" class="btn bg-red text-white">Logout</a>
+  </div>
+  <section class="footer mt-5">
+    
+  </section>
+
+    <%}%>
+
+
+
+<%if (typeof user == 'undefined') {%>
+    <div class="row">
     
       <div class="card card-body bg-black">
         <h2 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h2>
@@ -132,7 +148,7 @@
     
   </div>
 
-
+<%}%>
 
 
   <div class="subscribe-btns">
