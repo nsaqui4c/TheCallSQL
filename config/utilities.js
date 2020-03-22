@@ -113,9 +113,18 @@ const subscribeUser=(user)=>{
     return new Promise((resolve,reject)=>{
         con.getCon.then((connect) => {
             
-            sql="update cuser set ?";
+            sql=`update cuser set ? where email='${user.email}'`;
+            console.log("========"+sql)
             value={
-                age:user.age//,gender:user.gender,profesion:user.profession,mobno:user.mobile,city:user.city,state:user.state,country:user.country,type:'S' 
+                age:user.age,
+                gender:user.gender,
+                profession:user.profession,
+                mobno:user.mobile,
+                adress:user.address,
+                city:user.city,
+                state:user.state,
+                country:user.country,
+                type:'S' 
             }
             connect.query(sql,value, (err, rows) => {
                 if (err) reject(err, "error inserting data to DB");
