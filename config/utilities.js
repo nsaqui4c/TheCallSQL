@@ -120,7 +120,7 @@ const subscribeUser=(user)=>{
                 gender:user.gender,
                 profession:user.profession,
                 mobno:user.mobile,
-                adress:user.address,
+                address:user.address,
                 city:user.city,
                 state:user.state,
                 country:user.country,

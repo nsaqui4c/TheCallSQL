@@ -3,9 +3,9 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "127.0.0.1",
   user: "newUser",
-  password:"",
-  //password:"Pass1word",
-  database: "tcdb",
+  //password:"",
+  password:"Pass1word",
+  database: "thecghtd_tcdb",
   port: 3306
 });
 

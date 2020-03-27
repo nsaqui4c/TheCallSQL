@@ -90,7 +90,7 @@ router.get('/subscribe',ensureAuthenticated, (req, res) => res.render('subscript
 
 //Suubscriptin Post
 router.post('/subscription', (req, res) => {
-    const userToSubscribe = {  age, gender,subscription, profession,adress,city, state, mobile } = req.body;
+    const userToSubscribe = {  age, gender,subscription, profession,address,city, state, mobile } = req.body;
     let errors = [];
 
     if(!req.user){
@@ -107,18 +107,18 @@ router.post('/subscription', (req, res) => {
 
     if (!age || !gender || !subscription || !profession||!adress || !city || !state || !mobile) {
         errors.push({ msg: 'Please enter all fields' });
-        res.render('register', { errors, city, state });
+        res.render('register', { errors, city, state, address,profession,age,mobile });
 
     }
 
    
     if (errors.length > 0) {
-        res.render('register', { errors, city, state });
+        res.render('register', { errors, city, state, address,profession,age,mobile });
         
     } 
 
     else {
-        errors.push({msg:"all field good"})
+        //errors.push({msg:"all field good"})
         req.flash('success_msg','You are now subscribed' );
 
         console.log(userToSubscribe);
