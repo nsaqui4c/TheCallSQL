@@ -2,7 +2,7 @@ var mysql = require('mysql');
 
 var con = mysql.createConnection({
   host: "127.0.0.1",
-  user: "newUser",
+  user: "thecghtd_newUser",
   //password:"",
   password:"Pass1word",
   database: "thecghtd_tcdb",
@@ -27,7 +27,11 @@ const getConnection =new Promise((resolve,reject)=>{
     if(con.state==='disconnected'){
     con.connect(function(err) {
         console.log("trying ......!",con.state);
-      if (err) reject('error connecting to db', err);
+      if (err){
+        console.log("========error connecting DB=============", err)
+        reject('error connecting to db', err);
+      } 
+      else      
       resolve(con);
          
     });

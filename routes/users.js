@@ -105,28 +105,28 @@ router.post('/subscription', (req, res) => {
 
     
 
-    if (!age || !gender || !subscription || !profession||!adress || !city || !state || !mobile) {
+    if (!age || !gender || !subscription || !profession||!address || !city || !state || !mobile) {
         errors.push({ msg: 'Please enter all fields' });
-        res.render('register', { errors, city, state, address,profession,age,mobile });
+        res.render('subscription', { errors, city, state, address,profession,age,mobile,user:req.user });
 
     }
 
    
-    if (errors.length > 0) {
-        res.render('register', { errors, city, state, address,profession,age,mobile });
+    // if (errors.length > 0) {
+    //     res.render('register', { errors, city, state, address,profession,age,mobile });
         
-    } 
+    // } 
 
     else {
         //errors.push({msg:"all field good"})
-        req.flash('success_msg','You are now subscribed' );
+        req.flash('success_msg','You are now subscribed, Someone from TheCall will call you for payment' );
 
         console.log(userToSubscribe);
 
         utility.subscribeUser(userToSubscribe).then(rows=>{
 
             console.log(rows)
-            res.render('register', { errors, city, state });
+            res.redirect('/');
         })
 
         

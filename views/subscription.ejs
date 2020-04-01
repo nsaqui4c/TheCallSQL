@@ -15,21 +15,23 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div class="form-group">
-                            <label for="name">First Name</label>
+                            <label for="fname">First Name</label>
                             <input type="text" id="fname" name="fname" class="form-control" placeholder=<%=user.fName%> />
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="name">Last Name</label>
+                            <label for="lname">Last Name</label>
                             <input type="text" id="lname" name="lname" class="form-control" placeholder=<%=user.lName%> />
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="name">Age</label>
-                            <input type="text" id="umar" name="age" class="form-control" placeholder="Age" />
+                            <label for="age">Age</label>
+                            <input type="text" id="age" name="age" class="form-control" 
+                            placeholder="Age"
+                            value="<%= typeof age != 'undefined' ? age : '' %>"  />
                         </div>
                     </div>
                 </div>
@@ -42,7 +44,7 @@
 
                         <div class="form-group">
 
-                            <label for="name">Gender</label>
+                            <label for="gender">Gender</label>
                             <select class="custom-select" name="gender">
                                 <option value="Male" name="Male">Male</option>
                                 <option value="Female" name="Female">Female</option>
@@ -53,8 +55,8 @@
                     <div class="col-md-8">
                         <div class="form-group">
 
-                            <label for="name">Subscription Plan</label>
-                            <select class="custom-select" name="subscription">
+                            <label for="subscription">Subscription Plan</label>
+                            <select class="custom-select" name="subscription" value="<%= typeof subscription != 'undefined' ? subscription : '' %>" >
                                 <option value="1h" name="1h">1 Month - 40 Rs. (Hardcopy)</option>
                                 <option value="3h" name="Female">3 Months - 120 Rs. (Hardcopy)</option>
                                 <option value="6h" name="Male">6 Months - 220 Rs. (Hardcopy)</option>
@@ -63,6 +65,7 @@
                                 <option value="3s" name="Female">3 Months - 30 Rs. (Softcopy)</option>
                                 <option value="6s" name="Male">6 Months - 50 Rs. (Softcopy)</option>
                                 <option value="12s" name="Female">12 Months - 100 Rs. (Softcopy)</option>
+                                
 
                             </select>
                         </div>
@@ -75,7 +78,8 @@
 
                 <div class="form-group">
                     <label for="Profession">Profession</label>
-                    <input type="text" id="profession" name="profession" class="form-control" placeholder="Profession" />
+                    <input type="text" id="profession" name="profession" class="form-control" placeholder="Profession" 
+                    value="<%= typeof profession != 'undefined' ? profession : '' %>" >
                 </div>
 
 
@@ -83,21 +87,24 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="Adress">Address</label>
-                            <textarea class="form-control" id="address" name="address" rows="4"></textarea>
+                            <textarea class="form-control" id="address" name="address" rows="4"
+                            value="<%= typeof address != 'undefined' ? address : '' %>"></textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="row">
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <input type="text" id="city" name="city" class="form-control" placeholder="City Name" />
+                                <input type="text" id="city" name="city" class="form-control" placeholder="City Name"
+                                value="<%= typeof city != 'undefined' ? city : '' %>" />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group">
                                 <label for="state">State</label>
-                                <input type="text" id="state" name="state" class="form-control" placeholder="State" />
+                                <input type="text" id="state" name="state" class="form-control" placeholder="State" 
+                                value="<%= typeof state != 'undefined' ? state : '' %>"/>
                             </div>
                         </div>
 
@@ -107,9 +114,10 @@
 
 
                 <div class="form-group">
-                    <label for="Mobile">Mobile <sup>(Sisters can provide their MAHRAM's phone no. or just write
+                    <label for="mobile">Mobile <sup>(Sisters can provide their MAHRAM's phone no. or just write
                             0123456789)</sup></label>
-                    <input type="text" id="mobile" name="mobile" class="form-control" placeholder="0123456789" />
+                    <input type="text" id="mobile" name="mobile" class="form-control"
+                    value="<%= typeof mobile != 'undefined' ? mobile : '' %>" />
                 </div>
 
 
