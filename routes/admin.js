@@ -41,18 +41,17 @@ router.post("/upload", (req, res) => {
       tempPath.mv(targetPath, err => {
         if (err) return handleError(err, res);
 
-        res
-          .status(200)
-          .contentType("text/plain")
-          .end("File uploaded!");
+        req.flash('success_msg','File Uploaded successfully' );
+        res.redirect('/');
 
       });
 
 
     }
-    else res.status(200)
-      .contentType("text/plain")
-      .end("File uploaded!");
+    else {
+      req.flash('success_msg','File Uploaded successfully' );
+        res.redirect('/');
+    }
 
   }).catch((msg, err) => {
     console.log(msg, err)

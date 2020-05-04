@@ -81,7 +81,8 @@ router.post('/register', (req, res) => {
 
 
 // Subscription Page
-router.get('/subscribe',ensureAuthenticated, (req, res) => res.render('subscription',
+router.get('/subscribe',//ensureAuthenticated, 
+(req, res) => res.render('subscription',
     {
     user:req.user
     }
@@ -143,7 +144,8 @@ router.post('/subscription', (req, res) => {
 
 //freecopy
 
-router.get('/freecopy', ensureAuthenticated, (req, res) =>
+router.get('/freecopy', //ensureAuthenticated,
+ (req, res) =>
     res.render('freecopy', {
     user: req.user
     })
